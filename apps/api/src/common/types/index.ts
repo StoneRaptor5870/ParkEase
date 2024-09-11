@@ -1,4 +1,4 @@
-export type Role = 'admin'
+export type Role = 'admin' | 'Manager'
 
 export type GetUserType = {
   uid: string
