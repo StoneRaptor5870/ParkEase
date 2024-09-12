@@ -1,11 +1,11 @@
 import { BadRequestException, Injectable } from '@nestjs/common'
-import { FindManyUserArgs, FindUniqueUserArgs } from './dtos/find.args';
-import { PrismaService } from 'src/common/prisma/prisma.service';
+import { FindManyUserArgs, FindUniqueUserArgs } from './dtos/find.args'
+import { PrismaService } from 'src/common/prisma/prisma.service'
 import {
   RegisterWithCredentialsInput,
   RegisterWithProviderInput,
 } from './dtos/create-user.input'
-import { UpdateUserInput } from './dtos/update-user.input';
+import { UpdateUserInput } from './dtos/update-user.input'
 import * as bcrypt from 'bcryptjs'
 import { v4 as uuid } from 'uuid'
 
@@ -71,22 +71,22 @@ export class UsersService {
   }
 
   findAll(args: FindManyUserArgs) {
-    return this.prisma.user.findMany(args);
+    return this.prisma.user.findMany(args)
   }
 
   findOne(args: FindUniqueUserArgs) {
-    return this.prisma.user.findUnique(args);
+    return this.prisma.user.findUnique(args)
   }
 
   update(updateUserInput: UpdateUserInput) {
-    const { uid, ...data } = updateUserInput;
+    const { uid, ...data } = updateUserInput
     return this.prisma.user.update({
       where: { uid },
       data: data,
-    });
+    })
   }
 
   remove(args: FindUniqueUserArgs) {
-    return this.prisma.user.delete(args);
+    return this.prisma.user.delete(args)
   }
 }

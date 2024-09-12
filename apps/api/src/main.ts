@@ -1,12 +1,12 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { NestFactory } from '@nestjs/core'
+import { AppModule } from './app.module'
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.enableCors();
+  const app = await NestFactory.create(AppModule)
+  app.enableCors()
   const config = new DocumentBuilder()
     .setTitle('ParkEase | Nischay')
     .setDescription(
@@ -19,10 +19,10 @@ async function bootstrap() {
     )
     .setVersion('0.1')
     .addBearerAuth()
-    .build();
+    .build()
 
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('/', app, document);
-  await app.listen(port, '0.0.0.0');
+  const document = SwaggerModule.createDocument(app, config)
+  SwaggerModule.setup('/', app, document)
+  await app.listen(port, '0.0.0.0')
 }
-bootstrap();
+bootstrap()
