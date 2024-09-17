@@ -76,6 +76,8 @@ export class CustomersResolver {
 
   @ResolveField(() => [Booking])
   bookings(@Parent() customer: Customer) {
-    return this.prisma.booking.findMany({ where: { customerId: customer.uid } })
+    return this.prisma.booking.findMany({
+      where: { customerId: customer.uid },
+    })
   }
 }
