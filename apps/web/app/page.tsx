@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { add } from '@autospace/sample-lib'
 import { useQuery } from '@apollo/client'
@@ -7,7 +7,7 @@ import { CompaniesDocument } from '@autospace/network/src/gql/generated'
 export default function Home() {
   const { data, loading } = useQuery(CompaniesDocument)
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>
 
   return (
     <div>
@@ -25,5 +25,5 @@ export default function Home() {
         )}
       </div>
     </div>
-  );
+  )
 }
