@@ -1,7 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
-  return (
-    <div>UI Library for ParkEase</div>
-  );
+  return <div>UI Library for ParkEase</div>
 }
