@@ -10,12 +10,12 @@ export default function Home() {
   if (loading) return <div>Loading...</div>
 
   return (
-    <div>
+    <main className="bg-primary">
       ParkEase Home {add(10, 5)}
       <div>
         {data?.companies && data.companies.length > 0 ? (
           data.companies.map((company) => (
-            <div className="p-4 bg-gray-100 rounded" key={company.id}>
+            <div className="p-4 rounded" key={company.id}>
               <div>{company.displayName}</div>
               <div>{company.description}</div>
             </div>
@@ -24,6 +24,6 @@ export default function Home() {
           <div>No companies</div>
         )}
       </div>
-    </div>
+    </main>
   )
 }

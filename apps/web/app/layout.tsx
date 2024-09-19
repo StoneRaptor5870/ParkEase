@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import { ApolloProvider } from '@autospace/network/src/config/apollo'
-import './globals.css'
+import '@autospace/ui/app/globals.css'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
