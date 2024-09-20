@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import { ApolloProvider } from '@autospace/network/src/config/apollo'
 import '@autospace/ui/app/globals.css'
+import { SessionProvider } from '@autospace/ui/components/molecules/SessionProvider'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -26,13 +27,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ApolloProvider>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          {children}
-        </body>
-      </ApolloProvider>
+      <SessionProvider>
+        <ApolloProvider>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            {children}
+          </body>
+        </ApolloProvider>
+      </SessionProvider>
     </html>
   )
 }
