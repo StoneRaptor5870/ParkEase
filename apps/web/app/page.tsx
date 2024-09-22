@@ -6,6 +6,7 @@ import { CompaniesDocument } from '@autospace/network/src/gql/generated'
 import { useSession, signOut } from 'next-auth/react'
 import Link from 'next/link'
 import { Button } from '@autospace/ui/components/atoms/Button'
+import { Sidebar } from '@autospace/ui/components/organisms/Sidebar'
 
 export default function Home() {
   const { data, loading } = useQuery(CompaniesDocument)
@@ -21,6 +22,9 @@ export default function Home() {
         ) : (
           <Link href="/login">Login</Link>
         )}
+      </div>
+      <div className="p-12">
+        <Sidebar>sdasdsdsad</Sidebar>
       </div>
       ParkEase Home {add(10, 5)}
       <div>
