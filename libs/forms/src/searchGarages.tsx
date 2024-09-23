@@ -9,10 +9,10 @@ export const formSchemaSearchGarage = z.object({
   startTime: z.string(),
   endTime: z.string(),
   locationFilter: z.object({
-    ne_lat: z.number().optional(),
-    ne_lng: z.number().optional(),
-    sw_lat: z.number().optional(),
-    sw_lng: z.number().optional(),
+    ne_lat: z.number(),
+    ne_lng: z.number(),
+    sw_lat: z.number(),
+    sw_lng: z.number(),
   }),
   type: z.nativeEnum(SlotType).array(),
   pricePerHour: minMaxTuple.optional(),
@@ -59,13 +59,13 @@ export const AllSlotTypes = [
   SlotType.Heavy,
 ]
 export const formDefaultValuesSearchGarages: DefaultValues<FormTypeSearchGarage> =
-  {
-    pricePerHour: [0, 200],
-    width: [0, 20],
-    height: [0, 100],
-    length: [0, 100],
-    type: AllSlotTypes.sort(),
-  }
+{
+  pricePerHour: [0, 200],
+  width: [0, 20],
+  height: [0, 100],
+  length: [0, 100],
+  type: AllSlotTypes.sort(),
+}
 export const FormProviderSearchGarage = ({
   children,
 }: {
