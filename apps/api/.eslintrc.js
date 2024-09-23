@@ -25,4 +25,4 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     'prettier/prettier': ['error', { semi: false }],
   },
-};
+}
