@@ -1,11 +1,11 @@
 'use client'
 
 import { useQuery } from '@apollo/client'
-import { CompaniesDocument, SearchGaragesDocument, } from '@autospace/network/src/gql/generated'
-import { useSession, signOut } from 'next-auth/react'
-import Link from 'next/link'
-import { Button } from '@autospace/ui/components/atoms/Button'
-import { Sidebar } from '@autospace/ui/components/organisms/Sidebar'
+import {
+  CompaniesDocument,
+  SearchGaragesDocument,
+} from '@autospace/network/src/gql/generated'
+import { useSession } from 'next-auth/react'
 
 export default function Home() {
   const { data, loading } = useQuery(CompaniesDocument)
@@ -26,7 +26,7 @@ export default function Home() {
 
   return (
     <main className="bg-primary h-screen w-screen">
-      ParkEase Home 
+      ParkEase Home
       <div>
         {data?.companies && data.companies.length > 0 ? (
           data.companies.map((company) => (
