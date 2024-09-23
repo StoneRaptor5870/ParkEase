@@ -59,13 +59,13 @@ export const AllSlotTypes = [
   SlotType.Heavy,
 ]
 export const formDefaultValuesSearchGarages: DefaultValues<FormTypeSearchGarage> =
-{
-  pricePerHour: [0, 200],
-  width: [0, 20],
-  height: [0, 100],
-  length: [0, 100],
-  type: AllSlotTypes.sort(),
-}
+  {
+    pricePerHour: [0, 200],
+    width: [0, 20],
+    height: [0, 100],
+    length: [0, 100],
+    type: AllSlotTypes.sort(),
+  }
 export const FormProviderSearchGarage = ({
   children,
 }: {

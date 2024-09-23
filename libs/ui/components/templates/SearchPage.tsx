@@ -33,7 +33,7 @@ export const SearchPage = () => {
     },
     [setValue],
   )
-  
+
   return (
     <Map
       onLoad={(e) => handleMapChange(e.target)}
