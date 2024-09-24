@@ -2,18 +2,21 @@ import { useLazyQuery } from '@apollo/client'
 import { SearchGaragesDocument } from '@autospace/network/src/gql/generated'
 import { useEffect } from 'react'
 import { GarageMarker } from './GarageMarker'
-import { FormTypeSearchGarage } from '@autospace/forms/src/searchGarages'
-import { useFormContext } from 'react-hook-form'
+import { useConvertSearchFormToVariables } from '@autospace/forms/src/adapters/searchFormAdapters'
 
 export const ShowGarages = () => {
   const [searchGarages, { loading, data, error }] = useLazyQuery(
     SearchGaragesDocument,
   )
-  const { watch } = useFormContext<FormTypeSearchGarage>()
-  const { endTime: end, startTime: start, locationFilter } = watch()
+
+  const { variables } = useConvertSearchFormToVariables()
+
   useEffect(() => {
-    searchGarages({ variables: { dateFilter: { end, start }, locationFilter } })
-  }, [end, locationFilter, searchGarages, start])
+    if (variables) {
+      searchGarages({ variables })
+    }
+  }, [searchGarages, variables])
+
   return (
     <>
       {data?.searchGarages.map((garage) => (

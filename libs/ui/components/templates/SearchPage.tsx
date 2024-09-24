@@ -14,11 +14,12 @@ import { IconArrowDown } from '@tabler/icons-react'
 import { HtmlInput } from '../atoms/HtmlInput'
 import { toLocalISOString } from '@autospace/util/date'
 import { ShowGarages } from '../organisms/search/ShowGarages'
+import { FilterSidebar } from '../organisms/search/FilterSideBar'
 
 export const SearchPage = () => {
   const { register, setValue, watch } = useFormContext<FormTypeSearchGarage>()
   const formData = watch()
-  console.log('formData', formData)
+
   const handleMapChange = useCallback(
     (target: ViewStateChangeEvent['target']) => {
       const bounds = target.getBounds()
@@ -72,6 +73,9 @@ export const SearchPage = () => {
       </Panel>
       <Panel position="right-center">
         <DefaultZoomControls />
+      </Panel>
+      <Panel position="right-top">
+        <FilterSidebar />
       </Panel>
     </Map>
   )
