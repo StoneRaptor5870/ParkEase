@@ -1,5 +1,3 @@
 export default function Page() {
-  return (
-    <div>Bookings</div>
-  )
+  return <div>Bookings</div>
 }
