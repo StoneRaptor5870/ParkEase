@@ -12,7 +12,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'ParkEase | Manager',
-  description: 'Vehicle parking application for company managers for management.',
+  description:
+    'Vehicle parking application for company managers for management.',
 }
 
 const MENUITEMS: MenuItem[] = [
