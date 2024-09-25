@@ -1,10 +1,10 @@
-import { RegisterForm } from '@autospace/ui/components/templates/RegisterForm'
+import { LoginForm } from '@autospace/ui/components/templates/LoginForm'
 import { AuthLayout } from '@autospace/ui/components/molecules/AuthLayout'
 
 export default function Page() {
   return (
-    <AuthLayout title={'Register'}>
-      <RegisterForm />
+    <AuthLayout title={'Login'}>
+      <LoginForm />
     </AuthLayout>
   )
 }
