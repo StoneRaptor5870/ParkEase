@@ -1,4 +1,4 @@
-import { Switch as HUISwitch, SwitchGroup, Label } from '@headlessui/react'
+import { Switch as HUISwitch, Label, Field } from '@headlessui/react'
 import { ReactNode } from 'react'
 
 export interface Switch2Props {
@@ -17,7 +17,7 @@ export const Switch = ({
   className,
 }: Switch2Props) => {
   return (
-    <SwitchGroup>
+    <Field>
       <div className={`flex items-center ${className}`}>
         <Label className="mr-2 text-sm">{label}</Label>
         <HUISwitch
@@ -36,6 +36,6 @@ export const Switch = ({
           </span>
         </HUISwitch>
       </div>
-    </SwitchGroup>
+    </Field>
   )
 }
