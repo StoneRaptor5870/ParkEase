@@ -29,7 +29,6 @@ export const SearchPage = () => {
         sw_lat: bounds?.getSouthWest().lat || 0,
         sw_lng: bounds?.getSouthWest().lng || 0,
       }
-      console.log('locationFilter', locationFilter)
       setValue('locationFilter', locationFilter)
     },
     [setValue],

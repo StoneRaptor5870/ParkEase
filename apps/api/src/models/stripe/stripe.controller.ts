@@ -18,7 +18,7 @@ export class StripeController {
   constructor(
     private readonly stripeService: StripeService,
     private readonly bookingService: BookingsService,
-  ) { }
+  ) {}
 
   @Get()
   helloStripe() {
@@ -39,9 +39,8 @@ export class StripeController {
       throw new BadRequestException('Session id missing.')
     }
 
-    const session = await this.stripeService.stripe.checkout.sessions.retrieve(
-      sessionId,
-    )
+    const session =
+      await this.stripeService.stripe.checkout.sessions.retrieve(sessionId)
 
     const { uid, bookingData } = session.metadata
 

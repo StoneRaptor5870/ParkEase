@@ -23,6 +23,7 @@ import { Button } from '../atoms/Button'
 import { useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { TotalPrice } from '@autospace/util/types'
+import { ManageValets } from './ManageValets'
 
 export const BookSlotPopup = ({
   garage,
@@ -38,24 +39,29 @@ export const BookSlotPopup = ({
     setValue,
     formState: { errors },
   } = useFormContext<FormTypeBookSlot>()
+
   const { startTime, endTime, phoneNumber, type, valet, vehicleNumber } =
     useWatch<FormTypeBookSlot>()
+
   const pricePerHour = garage.availableSlots.find(
     (slot) => slot.type === type,
   )?.pricePerHour
+
   const totalPriceObj = useTotalPrice({
     pricePerHour,
   })
+
   const totalPrice =
     totalPriceObj.parkingCharge +
     totalPriceObj.valetChargeDropoff +
     totalPriceObj.valetChargePickup
+
   const [booking, setBooking] = useState(false)
+
   return (
     <div className="flex gap-2 text-left border-t-2 border-white bg-white/50 backdrop-blur-sm">
       <Form
         onSubmit={handleSubmit(async (data) => {
-          console.log('formData: ', data)
           if (!uid) {
             alert('You are not logged in.')
             return
@@ -81,6 +87,7 @@ export const BookSlotPopup = ({
                 }
               : null),
           }
+
           setBooking(true)
           // Create booking session
           const res = await createBookingSession(
@@ -113,6 +120,7 @@ export const BookSlotPopup = ({
           noAutoChange
         />
         <DateRangeBookingInfo startTime={startTime} endTime={endTime} />
+
         <div className="flex flex-wrap gap-2 mt-2">
           <HtmlLabel title="Slot type" error={errors.type?.message}>
             <Controller
@@ -149,6 +157,7 @@ export const BookSlotPopup = ({
                                   /hr
                                 </div>
                               </div>
+
                               <div className="text-gray-600">
                                 {slot.count} open
                               </div>
@@ -164,6 +173,7 @@ export const BookSlotPopup = ({
           </HtmlLabel>
         </div>
         {!type ? <FormError error="Set type" /> : null}
+
         <HtmlLabel title="Start time" error={errors.startTime?.message}>
           <HtmlInput
             type="datetime-local"
@@ -178,12 +188,15 @@ export const BookSlotPopup = ({
             {...register('endTime')}
           />
         </HtmlLabel>
+
         <HtmlLabel title="Vehicle number" error={errors.vehicleNumber?.message}>
           <HtmlInput placeholder="KA01AB1234" {...register('vehicleNumber')} />
         </HtmlLabel>
         <HtmlLabel title="Phone number" error={errors.phoneNumber?.message}>
           <HtmlInput placeholder="+910000000000" {...register('phoneNumber')} />
         </HtmlLabel>
+        <ManageValets garage={garage} />
+
         {totalPriceObj ? (
           <div className="mt-4">
             <CostTitleValue
@@ -198,9 +211,11 @@ export const BookSlotPopup = ({
               title="Valet Dropoff"
               price={totalPriceObj.valetChargeDropoff}
             />
+
             <CostTitleValue title="Total" price={totalPrice} />
           </div>
         ) : null}
+
         <Button loading={booking} type="submit" className="w-full mt-2">
           Book now
         </Button>
@@ -208,6 +223,7 @@ export const BookSlotPopup = ({
     </div>
   )
 }
+
 export const createBookingSession = async (
   uid: string,
   totalPriceObj: TotalPrice,
@@ -225,10 +241,13 @@ export const createBookingSession = async (
     }),
   })
   const checkoutSession = await response.json()
+
   const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+
   const stripe = await loadStripe(publishableKey || '')
   const result = await stripe?.redirectToCheckout({
     sessionId: checkoutSession.sessionId,
   })
+
   return result
 }

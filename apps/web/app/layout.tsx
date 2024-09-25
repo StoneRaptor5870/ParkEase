@@ -5,6 +5,7 @@ import '@autospace/ui/app/globals.css'
 import { SessionProvider } from '@autospace/ui/components/molecules/SessionProvider'
 import { Header } from '@autospace/ui/components/organisms/Header'
 import { MenuItem } from '@autospace/util/types'
+import { ToastContainer } from '@autospace/ui/components/molecules/Toast'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -42,6 +43,7 @@ export default function RootLayout({
           >
             <Header menuItems={MENUITEMS} />
             {children}
+            <ToastContainer />
           </body>
         </ApolloProvider>
       </SessionProvider>
