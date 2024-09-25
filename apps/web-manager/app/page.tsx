@@ -1,10 +1,15 @@
-import { RegisterForm } from '@autospace/ui/components/templates/RegisterForm'
-import { AuthLayout } from '@autospace/ui/components/molecules/AuthLayout'
+'use client'
 
-export default function Page() {
+import { IsLoggedIn } from '@autospace/ui/components/organisms/IsLoggedIn'
+import { IsManager } from '@autospace/ui/components/organisms/IsManager'
+import { ListGarages } from '@autospace/ui/components/organisms/ListGarages'
+
+export default function Home() {
   return (
-    <AuthLayout title={'Register'}>
-      <RegisterForm />
-    </AuthLayout>
+    <IsLoggedIn>
+      <IsManager>
+        {(companyId) => <ListGarages companyId={companyId} />}
+      </IsManager>
+    </IsLoggedIn>
   )
 }
