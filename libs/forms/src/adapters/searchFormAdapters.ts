@@ -28,16 +28,20 @@ type FormData = Partial<
 export const useConvertSearchFormToVariables = () => {
   const [variables, setVariables] =
     useState<SearchGaragesQueryVariables | null>(null)
+
   const {
     formState: { dirtyFields },
     watch,
   } = useFormContext<FormTypeSearchGarage>()
-  const formData = watch()
+
+  const formData = useWatch<FormTypeSearchGarage>()
+
   const debouncedFormData = useDebounce(formData, 1000)
+
   useEffect(() => {
     const {
-      endTime,
-      startTime,
+      endTime = '',
+      startTime = '',
       locationFilter,
       length,
       width,
@@ -47,10 +51,18 @@ export const useConvertSearchFormToVariables = () => {
       skip,
       take,
     } = debouncedFormData
+
+    if (!startTime || !endTime || !locationFilter) {
+      return
+    }
+
     const dateFilter: SearchGaragesQueryVariables['dateFilter'] = {
       start: startTime,
       end: endTime,
     }
+
+    const { ne_lat = 0, ne_lng = 0, sw_lat = 0, sw_lng = 0 } = locationFilter
+
     const slotsFilter = createSlotsFilter(dirtyFields, {
       length,
       width,
@@ -58,14 +70,19 @@ export const useConvertSearchFormToVariables = () => {
       pricePerHour,
       types,
     })
+
     const garagesFilter = createGaragesFilter(dirtyFields, { skip, take })
+
     setVariables({
       dateFilter,
-      locationFilter,
+      locationFilter: { ne_lat, ne_lng, sw_lat, sw_lng },
       ...(Object.keys(slotsFilter).length && { slotsFilter }),
       ...(Object.keys(garagesFilter).length && { garagesFilter }),
     })
   }, [debouncedFormData])
+
+  console.log('Hello filters')
+
   return { variables }
 }
 
@@ -79,6 +96,7 @@ export const createSlotsFilter = (
   const pricePerHour =
     dirtyFields.pricePerHour && intFilter(formData.pricePerHour)
   const type = dirtyFields.types && { in: formData.types }
+
   return {
     ...(length && { length }),
     ...(width && { width }),
@@ -94,6 +112,7 @@ export const createGaragesFilter = (
 ) => {
   const skip = (dirtyFields.skip && formData.skip) || 0
   const take = (dirtyFields.take && formData.take) || 10
+
   return {
     ...(skip && { skip }),
     ...(take && { take }),
