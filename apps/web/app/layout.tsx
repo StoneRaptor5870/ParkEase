@@ -6,6 +6,7 @@ import { SessionProvider } from '@autospace/ui/components/molecules/SessionProvi
 import { Header } from '@autospace/ui/components/organisms/Header'
 import { MenuItem } from '@autospace/util/types'
 import { ToastContainer } from '@autospace/ui/components/molecules/Toast'
+import { Container } from '@autospace/ui/components/atoms/Container'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -42,7 +43,7 @@ export default function RootLayout({
             className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-25`}
           >
             <Header menuItems={MENUITEMS} />
-            {children}
+            <Container>{children}</Container>
             <ToastContainer />
           </body>
         </ApolloProvider>
