@@ -29,9 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <SessionProvider>
         <ApolloProvider>
-          <body
-            className={`${inter.className} antialiased bg-gray-25`}
-          >
+          <body className={`${inter.className} antialiased bg-gray-25`}>
             <Header menuItems={MENUITEMS} />
             <Container>{children}</Container>
             <ToastContainer />
