@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import localFont from 'next/font/local'
+import { Inter } from 'next/font/google'
 import { ApolloProvider } from '@autospace/network/src/config/apollo'
 import '@autospace/ui/app/globals.css'
 import { SessionProvider } from '@autospace/ui/components/molecules/SessionProvider'
@@ -8,16 +8,7 @@ import { MenuItem } from '@autospace/util/types'
 import { ToastContainer } from '@autospace/ui/components/molecules/Toast'
 import { Container } from '@autospace/ui/components/atoms/Container'
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-})
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-})
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'ParkEase Customer',
@@ -27,7 +18,6 @@ export const metadata: Metadata = {
 const MENUITEMS: MenuItem[] = [
   { label: 'Search', href: '/search' },
   { label: 'Bookings', href: '/bookings' },
-  { label: 'About', href: '/about' },
 ]
 
 export default function RootLayout({
@@ -40,7 +30,7 @@ export default function RootLayout({
       <SessionProvider>
         <ApolloProvider>
           <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-25`}
+            className={`${inter.className} antialiased bg-gray-25`}
           >
             <Header menuItems={MENUITEMS} />
             <Container>{children}</Container>
