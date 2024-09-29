@@ -3,6 +3,7 @@ import { Tab, Tabs, TabPanel } from '../molecules/Tabs'
 import { useState } from 'react'
 import { ShowCustomerBookings } from '../organisms/ShowCustomerBooking'
 import { BookingStatus } from '@autospace/network/src/gql/generated'
+
 export const ListCustomerBookings = () => {
   const [value, setValue] = useState<0 | 1>(1)
   return (
@@ -16,7 +17,9 @@ export const ListCustomerBookings = () => {
         <Tab label={'ON GOING'} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <ShowCustomerBookings statuses={[BookingStatus.CheckedOut]} />
+        <ShowCustomerBookings
+          statuses={[BookingStatus.CheckedOut, BookingStatus.ValetReturned]}
+        />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <ShowCustomerBookings
