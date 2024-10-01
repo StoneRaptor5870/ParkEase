@@ -27,11 +27,11 @@ export const Header = ({ type, menuItems }: IHeaderProps) => {
     <header>
       <nav className="fixed z-40 top-0 w-full shadow-md bg-white/50 backdrop-blur-md">
         <Container className="relative   flex items-center justify-between h-16 py-2 gap-16">
-          <Link href="/" aria-label="Home" className="w-auto z-50">
+          <Link href="/" aria-label="Home" className="w-auto z-50 pl-2">
             <Brand type={type} className="hidden h-10 sm:block" />
             <Brand type={type} shortForm className="block sm:hidden" />
           </Link>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 pr-2">
             {uid ? (
               <div className="flex gap-6 items-center">
                 <div className="text-sm mr-6 flex gap-3">
