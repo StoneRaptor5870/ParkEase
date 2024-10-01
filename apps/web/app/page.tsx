@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main className="h-screen min-h-[300px] md:min-h-[400px]">
+    <main className="h-full min-h-[300px] md:min-h-[400px]">
       <div className="absolute top-16 bottom-0 left-0 right-0">
         <CarScene />
       </div>
