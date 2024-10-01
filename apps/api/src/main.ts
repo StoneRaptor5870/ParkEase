@@ -6,7 +6,17 @@ const port = process.env.PORT || 3000
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
-  app.enableCors()
+  app.enableCors({
+    origin: [
+      'https://park-ease-web-manager.vercel.app',
+      'https://park-ease-web-admin.vercel.app',
+      'https://park-ease-web-valet.vercel.app',
+      'https://park-ease-web.vercel.app',
+      'https://studio.apollographql.com',
+    ],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  })
   const config = new DocumentBuilder()
     .setTitle('ParkEase | Nischay')
     .setDescription(
