@@ -20,6 +20,7 @@
 
 1. 🤖 [Introduction](#introduction)
 2. ⚙️ [Tech Stack](#tech-stack)
+3. 🔋 [Features](#features)
 
 ## <a name="introduction">🤖 Introduction</a>
 
@@ -40,3 +41,35 @@ A cutting-edge SaaS platform that revolutionizes parking management with a seaml
 - Mapbox
 - Swagger
 - Tailwind CSS
+
+## <a name="features">🔋 Features</a>
+
+1. **Monorepo Architecture**
+The application is structured in a monorepo format, comprising five key projects:
+
+    Backend: A powerful API built with REST and GraphQL to efficiently serve data and handle complex requests.
+    Customer Frontend: A user-friendly interface where customers can search for parking spots, make bookings, and manage their vehicle pick-up/drop-off.
+    Valet Frontend: A streamlined interface designed specifically for valets to manage vehicle assignments and optimize the pickup and drop-off process.
+    Manager Frontend: A dedicated portal for managers to oversee operations, monitor valet activities, and track garage performance.
+    Admin Frontend: A comprehensive dashboard for administrators to manage the system, track transactions, monitor activity, and handle user queries.
+
+2. **Robust Authentication**
+Our platform offers secure and seamless user authentication through Nest.js with built-in support for Google OAuth. This ensures that users can quickly sign in with their Google accounts while maintaining top-level security for both customers and admin users.
+
+3. **Modern Home Page**
+The home page features a dynamic, immersive 3D car parking scene powered by Three.js, providing users with an engaging visual experience as they explore the platform.
+
+4. **Fully Functional Search Capabilities with Advanced Filtering**
+Users can search for parking spots with real-time filtering and sorting options. Advanced filters enable users to narrow down results based on proximity, availability, price, and more, ensuring they find the most convenient spot quickly.
+
+5. **Booking Slot Implementation for Customers' Vehicles**
+Our platform allows customers to book parking slots in advance for their vehicles. This feature includes real-time availability updates and reservation management, ensuring a stress-free parking experience.
+
+6. **Mapbox Implementation for Live Garage Locations**
+With Mapbox integrated into the platform, users can view live locations of available garages on an interactive map. This allows customers to easily select parking spots and see real-time updates on valet and garage locations.
+
+7. **Stripe Integration for Payments**
+Payments are handled seamlessly through Stripe, ensuring secure and reliable transactions. Users can pay for their bookings with ease, using the industry-standard Stripe payment gateway for a smooth checkout experience.
+
+8. **Responsive Design**
+The entire platform is fully responsive, ensuring a seamless experience across all devices. Whether customers are accessing the platform from a desktop, tablet, or mobile phone, they can enjoy a smooth and intuitive interface optimized for their screen size.
